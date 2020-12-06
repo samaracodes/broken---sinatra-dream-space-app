@@ -50,7 +50,7 @@ class UsersController < ApplicationController
         if params[:name] != "" && params[:email] != "" && params[:password] != "" 
                 # valid input
             @user = User.create(params)
-            session[:user_id = @user.id] #actually logging the user in
+            session[:user_id] = @user.id #actually logging the user in
                 # where do I go now?
             redirect to "/users/#{@user.id}"
         else
