@@ -3,35 +3,44 @@ Specifications for the Sinatra Assessment
 
 Specs:
 
- [ ] Use Sinatra to build the app
+ [x] Use Sinatra to build the app
 
- [ ] Use ActiveRecord for storing information in a database
+ [x] Use ActiveRecord for storing information in a database
 
- [ ] Include more than one model class (e.g. User, Post, Category)
+ [x] Include more than one model class (e.g. User, Post, Category)
+   *******User & Dream_post*******
 
- [ ] Include at least one has_many relationship on your User model 
+ [x] Include at least one has_many relationship on your User model 
     (e.g.   User has_many Posts)
+   *******User has many Dream Posts*******
 
- [ ] Include at least one belongs_to relationship on another model 
+ [x] Include at least one belongs_to relationship on another model 
     (e.g. [ ]Post belongs_to User)
+   *******Dream Post belongs to User*******
 
- [ ] Include user accounts with unique login attribute (username or email)
+ [x] Include user accounts with unique login attribute (username or email)
 
- [ ] Ensure that the belongs_to resource has routes for Creating, Reading,
+ [x] Ensure that the belongs_to resource has routes for Creating, Reading,
     Updating and Destroying
+   *******User has full CRUD on dream posts*******
 
- [ ] Ensure that users can't modify content created by other users
+ [x] Ensure that users can't modify content created by other users
+  *******Don't show edit or delete links, also use helper method in controller to ensure edit and delete actions can only happen if current user owns the entry.*******
 
- [ ] Include user input validations
+ [x] Include user input validations
+   *******Users cannot put in empty posts*******
 
  -----------------------------------------------------------------------
- BONUS - not required - Display validation failures to user with error    
+ BONUS - not required - 
+  [] Display validation failures to user with error    
     message (example form URL e.g. /posts/new)
-    Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+
+  [X]Your README.md includes a short description, install instructions, a contributors guide and a link to the license for your code
+  ----------------------------------------------------------------------
 Confirm
 
- [ ]You have a large number of small Git commits
- [ ]Your commit messages are meaningful
- [ ]You made the changes in a commit that relate to the commit message
- [ ]You don't include changes in a commit that aren't related to the 
+ [x]You have a large number of small Git commits
+ [x]Your commit messages are meaningful
+ [x]You made the changes in a commit that relate to the commit message
+ [x]You don't include changes in a commit that aren't related to the 
     commit message
