@@ -10,6 +10,6 @@ DreamPost.create(content: "Today is Tuesday and it's great", user_id: samara.id)
 
 # Use ActiveRecord to pre-associate data:
 samara.dream_posts.create(content: "We are building a SUPER FUN Sinatra App! YAY")
-cameron.dream_posts.create(content: "Its 2AM and Im writing code!!!")
-
+cameron.dream_posts.build(content: "Its 2AM and Im writing code!!!")
+cameron_post.save
 

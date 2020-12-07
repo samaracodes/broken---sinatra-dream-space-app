@@ -1,23 +1,27 @@
-<!-- SHOW PAGE FOR A DREAM POST -->
+            <!-- SHOW PAGE FOR A DREAM POST -->
+
+
+
 <center><h1> Dream Space </h1></center>
 <br>
 <h3><%= @dream_post.user.name %>'s Dream Post</h3>
 <p><%= @dream_post.content %></p>
 
 
-<!--if I am the user that owns this entry, show edit and delete links -->
-<!-- Edit Link -->
+            <!--if I am the user that owns this entry, show edit and delete links -->
+            <!-- Edit Link -->
 
 <% if authorized_to_edit?(@dream_post) %>
     <h5><a href="/dream_posts/<%=@dream_post.id%>/edit">Edit</a></h5>
     <br>
 
-<!-- Delete Link -->
+            <!-- Delete Link -->
     <form class="" action="/dream_posts/<%= @dream_post.id %>"
     method="post">
 
-    <!-- How do I turn this form submission into a DELETE request??/ -->
+                <!-- How do I turn this form submission into a DELETE request??/ -->
         <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" name="" value="Delete">
+        <input type="submit" name="" value="Delete">
     </form>
+
 <% end %>

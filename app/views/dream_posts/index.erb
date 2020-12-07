@@ -1,12 +1,17 @@
 <center><h1> Dream Space </h1></center>
-<h3>Homepage</h3>
+<hr class="rounded">
+<br>
+
+
+<h3 style="color:green;">Homepage</h3>
+
+
+
 <br>
 <% @dream_posts.each do |dream_post| %>
-    <h6><a href="/dream_posts/<%= dream_post.id %>"><%= dream_post.created_at %></a></h6>
+    <h5>@<%= dream_post.user.name %></h5>
+    <br>
     <p><%= dream_post.content %></p>
-    <p>By <%= dream_post.user.name %></p>
-    <br>
-    <br>
-    <br>
-    <br>
+    <h6><a href="/dream_posts/<%= dream_post.id %>"><%= dream_post.created_at %></a></h6>
+    <hr class="dotted">
 <% end %>
