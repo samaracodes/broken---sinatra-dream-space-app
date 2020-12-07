@@ -11,21 +11,18 @@ class ApplicationController < Sinatra::Base
     # to imitate you they wont be able to.
   end
 
-  get "/" do
-    if logged_in?
-      redirect "/users/#{current_user.id}"
-    else
+  get '/' do
       erb :'/welcome'
-    end
   end
 
   helpers do 
 
     def logged_in?
       #true if user is logged in, otherwise false
-      !!current_user #will return nil or the user
-                      #double bang(!!) takes a value and turns it 
-                      #into a boolean if it's true or false. 
+      !!current_user 
+      #will return nil or the user           
+      #double bang(!!) takes a value and turns it            
+      #into a boolean if it's true or false. 
     end
 
     def current_user
@@ -39,6 +36,8 @@ class ApplicationController < Sinatra::Base
     def authorized_to_edit?(dream_post)
       dream_post.user == current_user
     end
+
+    #BUILD HELPER MOETHOD FOR REDIRECTING IF NOT LOGGED IN
 
   end
 
