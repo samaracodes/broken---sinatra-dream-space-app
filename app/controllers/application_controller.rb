@@ -36,6 +36,10 @@ class ApplicationController < Sinatra::Base
       #to the variable
     end
 
+    def authorized_to_edit?(dream_post)
+      dream_post.user == current_user
+    end
+
   end
 
 
