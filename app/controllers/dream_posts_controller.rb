@@ -1,4 +1,14 @@
 class DreamPostsController < ApplicationController
+    # index route for all dream posts
+    get '/dream_posts' do
+        @dream_posts = DreamPost.all
+        #local variables(without @) are block scope variables
+        #instance variables are scroped to the instance 
+        #of the class it's written in
+        erb :'/dream_posts/index'
+    end
+
+
     # get dream_posts/new to render a form to create a new 
     # entry
     get '/dream_posts/new' do
@@ -41,8 +51,6 @@ class DreamPostsController < ApplicationController
         else
             redirect '/'
         end
-
-
     end
 
     patch "/dream_posts/:id" do 
@@ -59,11 +67,9 @@ class DreamPostsController < ApplicationController
                 redirect "/users/#{current_user.id}"
             end
         else
-        redirect '/'
+            redirect '/'
         end
     end
-
-    # index route for all dream posts
 
     private
 
