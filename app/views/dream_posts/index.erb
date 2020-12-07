@@ -1,1 +1,11 @@
-INDEX PAGE FOR DREAM POSTS
+<h1> All Dream Posts </h1>
+<br>
+<% @dream_posts.each do |dream_post| %>
+    <h6><a href="/dream_posts/<%= dream_post.id %>"><%= dream_post.created_at %></a></h6>
+    <p><%= dream_post.content %></p>
+    <p>By <%= dream_post.user.name %></p>
+    <br>
+    <br>
+    <br>
+    <br>
+<% end %>
