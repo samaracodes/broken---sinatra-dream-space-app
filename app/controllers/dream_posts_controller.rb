@@ -1,4 +1,5 @@
 class DreamPostsController < ApplicationController
+
     # index route for all dream posts
     get '/dream_posts' do
         @dream_posts = DreamPost.all
@@ -14,6 +15,7 @@ class DreamPostsController < ApplicationController
     get '/dream_posts/new' do
        erb :'/dream_posts/new'
     end
+
 
     # post dream_posts to create a new dream post
     post "/dream_posts" do
@@ -32,11 +34,15 @@ class DreamPostsController < ApplicationController
         end
     end
 
+
+
     # show route for a dream posts
     get '/dream_posts/:id' do
         @dream_post = DreamPost.find(params[:id])
         erb :'/dream_posts/show'
     end
+
+
 
     get '/dream_posts/:id/edit' do
         #this route should send us to dream_posts/edit.erb
@@ -53,12 +59,14 @@ class DreamPostsController < ApplicationController
         end
     end
 
+
+
     patch "/dream_posts/:id" do 
         #This action's job is to :
         # 1) Find the dream post
         set_dream_post
         if logged_in?
-            if @dream_post.user == current_user
+            if @dream_post.user == current_user && params[:content] != ""
                 # 2) Modify the dream post
                 @dream_post.update({content: params[:content]})
                 # 3) Redirect to the show page  
@@ -71,10 +79,31 @@ class DreamPostsController < ApplicationController
         end
     end
 
-    private
 
+
+    #delete a post 
+    delete '/dream_posts/:id' do
+        set_dream_post
+        if authorized_to_edit?(@dream_post)
+            #delete the post
+            @dream_post.destroy
+            #go somewhere
+            #we're redirecting instead of rendering bc of separation of concerns
+            #each action only has one job. Delete, Patch, and Post request actions
+            #generally end in redirects. Get requests end in renders. 
+            redirect '/dream_posts'
+        else
+            #go somewhere else-- not deleted
+            redirect '/dream_posts'
+        end
+    end
+
+
+
+    private
     def set_dream_post
-        
         @dream_post = DreamPost.find(params[:id])
     end
+
+
 end
