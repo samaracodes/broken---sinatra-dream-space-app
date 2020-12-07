@@ -1,1 +1,15 @@
-EDIT FORM GOES HERE
+EDIT PAGE FOR A DREAM POST
+<br>
+<br>
+
+<form class="" action="/dream_posts/<%= @dream_post.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="content">Content: </label>
+    <br>
+    <textarea name="content" style="width:auto; height:auto;"><%= @dream_post.content%>
+    </textarea>
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+
+</form>
