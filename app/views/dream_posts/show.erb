@@ -1,5 +1,7 @@
 <!-- SHOW PAGE FOR A DREAM POST -->
-<h2><%= @dream_post.user.name %>'s Dream Post</h2>
+<center><h1> Dream Space </h1></center>
+<br>
+<h3><%= @dream_post.user.name %>'s Dream Post</h3>
 <p><%= @dream_post.content %></p>
 
 
@@ -7,11 +9,8 @@
 <!-- Edit Link -->
 
 <% if authorized_to_edit?(@dream_post) %>
-    <a href="/dream_posts/<%=@dream_post.id%>/edit">Edit</a>
+    <h5><a href="/dream_posts/<%=@dream_post.id%>/edit">Edit</a></h5>
     <br>
-    <br>
-
-
 
 <!-- Delete Link -->
     <form class="" action="/dream_posts/<%= @dream_post.id %>"
