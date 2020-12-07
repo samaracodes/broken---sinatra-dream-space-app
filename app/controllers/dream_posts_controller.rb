@@ -31,8 +31,44 @@ class DreamPostsController < ApplicationController
     get '/dream_posts/:id/edit' do
         #this route should send us to dream_posts/edit.erb
         # which will render an edit form
-        erb :'/dream_posts/edit'
+        set_dream_post
+        if logged_in?
+            if @dream_post.user == current_user
+                erb :'/dream_posts/edit'
+            else
+                redirect "/users#{current_user.id}"
+            end
+        else
+            redirect '/'
+        end
+
+
+    end
+
+    patch "/dream_posts/:id" do 
+        #This action's job is to :
+        # 1) Find the dream post
+        set_dream_post
+        if logged_in?
+            if @dream_post.user == current_user
+                # 2) Modify the dream post
+                @dream_post.update({content: params[:content]})
+                # 3) Redirect to the show page  
+                redirect "/dream_posts/#{@dream_post.id}"
+            else
+                redirect "/users/#{current_user.id}"
+            end
+        else
+        redirect '/'
+        end
     end
 
     # index route for all dream posts
+
+    private
+
+    def set_dream_post
+        
+        @dream_post = DreamPost.find(params[:id])
+    end
 end
