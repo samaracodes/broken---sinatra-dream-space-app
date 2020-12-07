@@ -23,7 +23,16 @@ class DreamPostsController < ApplicationController
     end
 
     # show route for a dream posts
-    
+    get '/dream_posts/:id' do
+        @dream_post = DreamPost.find(params[:id])
+        erb :'/dream_posts/show'
+    end
+
+    get '/dream_posts/:id/edit' do
+        #this route should send us to dream_posts/edit.erb
+        # which will render an edit form
+        erb :'/dream_posts/edit'
+    end
 
     # index route for all dream posts
 end
